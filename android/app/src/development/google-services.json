@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "183780289416",
+    "project_id": "iitmandi-app-dev",
+    "storage_bucket": "iitmandi-app-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183780289416:android:c0e610dc4e001378b3283d",
+        "android_client_info": {
+          "package_name": "io.github.amansikarwar.institute_app.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4VYhyDxpnBDgFi9cCd7JfNWc8qvYlxm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "416499752145",
+    "project_id": "iitmandi-app-stag",
+    "storage_bucket": "iitmandi-app-stag.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416499752145:android:d6df0627c3817c126df9f0",
+        "android_client_info": {
+          "package_name": "io.github.amansikarwar.institute_app.stg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1uJk7t77pePtDVT3r1FCvK9ls0_kUsyI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
