@@ -12,7 +12,20 @@
           "package_name": "io.github.amansikarwar.institute_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "3410474415-rte3tnc7uuakosnsrqh67436osoe725k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.amansikarwar.institute_app",
+            "certificate_hash": "6df5c982a0c5018b4d186a3108d5c872c8aef717"
+          }
+        },
+        {
+          "client_id": "3410474415-1qe99tq0k38joij599shuqhdrdfmp7u2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA5MMy3rWq72EArLm3WyT9lSLXEjcx-LTE"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3410474415-1qe99tq0k38joij599shuqhdrdfmp7u2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "3410474415-94ln5ksr7vufs9js8n2qr1sq2198s9d9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.github.amansikarwar.institute-app"
+              }
+            }
+          ]
         }
       }
     }
