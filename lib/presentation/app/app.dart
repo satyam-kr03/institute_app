@@ -31,7 +31,7 @@ class InstituteApp extends StatelessWidget {
               // Navigate to HomePage when authenticated
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => const HomePage(),
+                  builder: (context) => HomePage(),
                 ),
               );
             }

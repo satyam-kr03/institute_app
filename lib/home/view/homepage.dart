@@ -3,10 +3,11 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:institute_app/clubs/clubs.dart';
 import 'package:institute_app/feed/feed.dart';
 import 'package:institute_app/profile/profile.dart';
+import 'package:institute_app/domain/auth/models/auth_user.dart';
+import 'package:fpdart/fpdart.dart' as fp;
+import 'package:institute_app/data/auth/firebase_auth_repo.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key});
-
   static const routeName = '/';
 
   @override
@@ -15,13 +16,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
+  late List<Widget> _pages; // Declare _pages variable
 
-  final List<Widget> _pages = [
-    HomePageContent(name: 'James'),
-    FeedPage(),
-    ClubsPage(),
-    ProfilePage(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    final FirebaseAuthRepo authRepo = FirebaseAuthRepo.instance();
+    final GetData data = GetData(authRepo);
+    _pages = [
+      HomePageContent(getData: data),
+      FeedPage(),
+      ClubsPage(),
+      ProfilePage(getData: data),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +40,7 @@ class _HomePageState extends State<HomePage> {
             _pages[_currentIndex],
           ],
         ),
-        bottomNavigationBar: //Container(
-        //color: Colors.black,
-        /*child:*/ //Padding(
-        //padding: EdgeInsets.symmetric(horizontal: 3, vertical: 3),
-        GNav(
+        bottomNavigationBar: GNav(
           backgroundColor: Colors.black,
           color: Colors.white,
           rippleColor: Colors.white,
@@ -69,25 +73,23 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
-      //),//
     );
-    //);
   }
 }
 
 class HomePageContent extends StatelessWidget {
-  final String name;
-
-  HomePageContent({required this.name});
+  final GetData getData;
+  HomePageContent({required this.getData});
 
   @override
   Widget build(BuildContext context) {
+    AuthUser authUser = getData.authRepo.getSignedInUser().getOrElse(() => AuthUser(id: '', name: '', email: ''));
     return Column(
       children: [
-        GreetingCard(name: name),
+        GreetingCard(name: '${authUser.name}'),
         Expanded(
           child: Center(
-            child: Text('Grid UI to be implemented here'),
+            child: Text('Home Page Content'),
           ),
         ),
       ],
@@ -97,13 +99,12 @@ class HomePageContent extends StatelessWidget {
 
 class GreetingCard extends StatelessWidget {
   final String name;
-
   GreetingCard({required this.name});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.0),
+      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 50.0),
       child: Card(
         elevation: 4.0,
         shape: RoundedRectangleBorder(
@@ -117,7 +118,7 @@ class GreetingCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Welcome, $name!',
+                'Welcome, $name !',
                 style: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
@@ -130,3 +131,4 @@ class GreetingCard extends StatelessWidget {
     );
   }
 }
+
