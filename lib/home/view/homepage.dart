@@ -32,46 +32,46 @@ class _HomePageState extends State<HomePage> {
             _pages[_currentIndex],
           ],
         ),
-        bottomNavigationBar: Container(
-          color: Colors.black,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 3, vertical: 3),
-            child: GNav(
-              backgroundColor: Colors.black,
-              color: Colors.white,
-              rippleColor: Colors.white,
-              activeColor: Colors.white,
-              tabBackgroundColor: Colors.grey.shade800,
-              gap: 8,
-              tabs: [
-                GButton(
-                  icon: Icons.home,
-                  text: 'Home',
-                ),
-                GButton(
-                  icon: Icons.feed,
-                  text: 'Feed',
-                ),
-                GButton(
-                  icon: Icons.groups,
-                  text: 'Clubs',
-                ),
-                GButton(
-                  icon: Icons.account_circle,
-                  text: 'Profile',
-                ),
-              ],
-              selectedIndex: _currentIndex,
-              onTabChange: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
+        bottomNavigationBar: //Container(
+        //color: Colors.black,
+        /*child:*/ //Padding(
+        //padding: EdgeInsets.symmetric(horizontal: 3, vertical: 3),
+        GNav(
+          backgroundColor: Colors.black,
+          color: Colors.white,
+          rippleColor: Colors.white,
+          activeColor: Colors.white,
+          tabBackgroundColor: Colors.grey.shade800,
+          gap: 5,
+          tabs: [
+            GButton(
+              icon: Icons.home,
+              text: 'Home',
             ),
-          ),
+            GButton(
+              icon: Icons.feed,
+              text: 'Feed',
+            ),
+            GButton(
+              icon: Icons.groups,
+              text: 'Clubs',
+            ),
+            GButton(
+              icon: Icons.account_circle,
+              text: 'Profile',
+            ),
+          ],
+          selectedIndex: _currentIndex,
+          onTabChange: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
         ),
       ),
+      //),//
     );
+    //);
   }
 }
 
@@ -87,7 +87,7 @@ class HomePageContent extends StatelessWidget {
         GreetingCard(name: name),
         Expanded(
           child: Center(
-            child: Text('Content for $name'),
+            child: Text('Grid UI to be implemented here'),
           ),
         ),
       ],
