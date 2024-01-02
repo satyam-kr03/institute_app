@@ -96,14 +96,6 @@ class SplashPage extends StatelessWidget {
                 child: const Text('Sign In With Google'),
               ),
             ),
-            const SizedBox(height: 8),
-            Center(
-              child: ElevatedButton(
-                onPressed: () => BlocProvider.of<AuthBloc>(context)
-                    .add(const AuthEvent.signedOut()),
-                child: const Text('Sign Out'),
-              ),
-            ),
           ],
         ),
       ),
