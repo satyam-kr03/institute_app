@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:institute_app/application/auth/auth_bloc.dart';
@@ -95,14 +94,6 @@ class SplashPage extends StatelessWidget {
                 onPressed: () => BlocProvider.of<AuthBloc>(context)
                     .add(const AuthEvent.signInWithGoogleRequested()),
                 child: const Text('Sign In With Google'),
-              ),
-            ),
-            const SizedBox(height: 8),
-            Center(
-              child: ElevatedButton(
-                onPressed: () => BlocProvider.of<AuthBloc>(context)
-                    .add(const AuthEvent.signedOut()),
-                child: const Text('Sign Out'),
               ),
             ),
           ],

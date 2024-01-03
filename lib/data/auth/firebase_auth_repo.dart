@@ -15,6 +15,13 @@ class FirebaseAuthRepo implements AuthInterface {
   })  : _firebaseAuth = firebaseAuth,
         _googleSignIn = googleSignIn;
 
+  factory FirebaseAuthRepo.instance() {
+    return FirebaseAuthRepo(
+      firebaseAuth: FirebaseAuth.instance,
+      googleSignIn: GoogleSignIn(),
+    );
+  }
+
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
