@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:institute_app/application/auth/auth_bloc.dart';
+import 'package:institute_app/home/view/homepage.dart';
 import 'package:institute_app/injection.dart';
 import 'package:institute_app/presentation/app/splash_page.dart';
-import 'package:institute_app/home/view/homepage.dart';
 
 class InstituteApp extends StatelessWidget {
-  const InstituteApp({Key? key});
+  const InstituteApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class InstituteApp extends StatelessWidget {
               // Navigate to HomePage when authenticated
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                  builder: (context) => HomePage(),
+                  builder: (context) => const HomePage(),
                 ),
               );
             }

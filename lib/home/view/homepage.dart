@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart' as fp;
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:institute_app/clubs/clubs.dart';
+import 'package:institute_app/data/auth/firebase_auth_repo.dart';
+import 'package:institute_app/domain/auth/models/auth_user.dart';
 import 'package:institute_app/feed/feed.dart';
 import 'package:institute_app/profile/profile.dart';
-import 'package:institute_app/domain/auth/models/auth_user.dart';
-import 'package:fpdart/fpdart.dart' as fp;
-import 'package:institute_app/data/auth/firebase_auth_repo.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   static const routeName = '/';
 
   @override
@@ -21,12 +23,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    final FirebaseAuthRepo authRepo = FirebaseAuthRepo.instance();
-    final GetData data = GetData(authRepo);
+    final authRepo = FirebaseAuthRepo.instance();
+    final data = GetData(authRepo);
     _pages = [
       HomePageContent(getData: data),
-      FeedPage(),
-      ClubsPage(),
+      const FeedPage(),
+      const ClubsPage(),
       ProfilePage(getData: data),
     ];
   }
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
           activeColor: Colors.white,
           tabBackgroundColor: Colors.grey.shade800,
           gap: 5,
-          tabs: [
+          tabs: const [
             GButton(
               icon: Icons.home,
               text: 'Home',
@@ -78,16 +80,17 @@ class _HomePageState extends State<HomePage> {
 }
 
 class HomePageContent extends StatelessWidget {
+  const HomePageContent({required this.getData, super.key});
   final GetData getData;
-  HomePageContent({required this.getData});
 
   @override
   Widget build(BuildContext context) {
-    AuthUser authUser = getData.authRepo.getSignedInUser().getOrElse(() => AuthUser(id: '', name: '', email: ''));
+    final authUser = getData.authRepo.getSignedInUser().getOrElse(() =>
+        AuthUser(id: '', name: '', email: ''),);
     return Column(
       children: [
-        GreetingCard(name: '${authUser.name}'),
-        Expanded(
+        GreetingCard(name: authUser.name),
+        const Expanded(
           child: Center(
             child: Text('Home Page Content'),
           ),
@@ -98,29 +101,28 @@ class HomePageContent extends StatelessWidget {
 }
 
 class GreetingCard extends StatelessWidget {
+  const GreetingCard({required this.name, super.key});
   final String name;
-  GreetingCard({required this.name});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 50.0),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 50),
       child: Card(
-        elevation: 4.0,
+        elevation: 4,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'Welcome, $name !',
-                style: TextStyle(
-                  fontSize: 18.0,
+                style: const TextStyle(
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -131,4 +133,3 @@ class GreetingCard extends StatelessWidget {
     );
   }
 }
-

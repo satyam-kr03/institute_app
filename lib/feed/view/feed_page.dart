@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 
 class FeedPage extends StatelessWidget {
+  const FeedPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Feed Page'),
+        title: const Text('Feed Page'),
       ),
       body: _buildFeedList(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print('Add Feed Item'); // need to update this
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
   Widget _buildFeedList(BuildContext context) {
-    List<String> feedItems = [
+    final feedItems = <String>[
       'Feed Item 1',
       'Feed Item 2',
       'Feed Item 3',
@@ -45,15 +47,14 @@ class FeedPage extends StatelessWidget {
 }
 
 class FeedItemDetailsPage extends StatelessWidget {
+  const FeedItemDetailsPage(this.feedItem, {super.key});
   final String feedItem;
-
-  FeedItemDetailsPage(this.feedItem);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Feed Item Details'),
+        title: const Text('Feed Item Details'),
       ),
       body: Center(
         child: Text(feedItem),
