@@ -66,8 +66,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '416499752145',
     projectId: 'iitmandi-app-stag',
     storageBucket: 'iitmandi-app-stag.appspot.com',
-    androidClientId: '416499752145-05vfd747n1bhjjgnppe19pkgdkfhutpq.apps.googleusercontent.com',
-    iosClientId: '416499752145-lb4joe3tj5i5l3fs0uj4e4tbphp39kmo.apps.googleusercontent.com',
+    androidClientId:
+        '416499752145-05vfd747n1bhjjgnppe19pkgdkfhutpq.apps.googleusercontent.com',
+    iosClientId:
+        '416499752145-lb4joe3tj5i5l3fs0uj4e4tbphp39kmo.apps.googleusercontent.com',
     iosBundleId: 'io.github.amansikarwar.institute-app.stg',
   );
 
@@ -77,9 +79,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '416499752145',
     projectId: 'iitmandi-app-stag',
     storageBucket: 'iitmandi-app-stag.appspot.com',
-    androidClientId: '416499752145-05vfd747n1bhjjgnppe19pkgdkfhutpq.apps.googleusercontent.com',
-    iosClientId: '416499752145-vev3q3mikbscfj0pcgtdo98f0dvmdr7u.apps.googleusercontent.com',
+    androidClientId:
+        '416499752145-05vfd747n1bhjjgnppe19pkgdkfhutpq.apps.googleusercontent.com',
+    iosClientId:
+        '416499752145-vev3q3mikbscfj0pcgtdo98f0dvmdr7u.apps.googleusercontent.com',
     iosBundleId: 'com.example.myApp',
   );
-
 }

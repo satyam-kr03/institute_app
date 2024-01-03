@@ -66,7 +66,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '183780289416',
     projectId: 'iitmandi-app-dev',
     storageBucket: 'iitmandi-app-dev.appspot.com',
-    iosClientId: '183780289416-n6kle7se6pd247145jnv9qi98ntep75c.apps.googleusercontent.com',
+    iosClientId:
+        '183780289416-n6kle7se6pd247145jnv9qi98ntep75c.apps.googleusercontent.com',
     iosBundleId: 'io.github.amansikarwar.institute-app.dev',
   );
 
@@ -76,8 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '183780289416',
     projectId: 'iitmandi-app-dev',
     storageBucket: 'iitmandi-app-dev.appspot.com',
-    iosClientId: '183780289416-c8tpcunf5ubslqnb2c0i1bt2vs3j57dm.apps.googleusercontent.com',
+    iosClientId:
+        '183780289416-c8tpcunf5ubslqnb2c0i1bt2vs3j57dm.apps.googleusercontent.com',
     iosBundleId: 'com.example.myApp',
   );
-
 }

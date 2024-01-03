@@ -12,16 +12,15 @@ class InstituteApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<AuthBloc>()
-            ..add(const AuthEvent.authCheckRequested()),
+          create: (context) =>
+              getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
       ],
       child: MaterialApp(
         title: 'Institute App',
         theme: ThemeData(
           appBarTheme: AppBarTheme(
-            backgroundColor:
-                Theme.of(context).colorScheme.inversePrimary,
+            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
         home: const SplashPage(),

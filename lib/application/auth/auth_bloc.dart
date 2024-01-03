@@ -31,8 +31,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           );
         case SignInWithGoogleRequested _:
           emit(const AuthState.authenticating());
-          final failureOrSuccess =
-              await _authInterface.signInWithGoogle();
+          final failureOrSuccess = await _authInterface.signInWithGoogle();
           emit(
             failureOrSuccess.fold(
               AuthState.authenticationFailed,
