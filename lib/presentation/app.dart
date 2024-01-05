@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:institute_app/application/auth/auth_bloc.dart';
 import 'package:institute_app/injection.dart';
-import 'package:institute_app/presentation/app/splash_page.dart';
+import 'package:institute_app/presentation/routes/router.dart';
 
 class InstituteApp extends StatelessWidget {
   const InstituteApp({super.key});
@@ -12,18 +12,16 @@ class InstituteApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+          create: (context) => getIt<AuthBloc>()
+            ..add(const AuthEvent.authCheckRequested()),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'Institute App',
-        theme: ThemeData(
-          appBarTheme: AppBarTheme(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          ),
-        ),
-        home: const SplashPage(),
+        debugShowCheckedModeBanner: false,
+        routerConfig: router,
+        theme: ThemeData.light(),
+        darkTheme: ThemeData.dark(),
       ),
     );
   }
