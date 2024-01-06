@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -87,22 +89,116 @@ class SplashPage extends StatelessWidget {
         }
       },
       child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 241, 244, 255),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: ElevatedButton(
-                onPressed: () => BlocProvider.of<AuthBloc>(context)
-                    .add(const AuthEvent.signInWithGoogleRequested()),
-                child: const Text('Sign In With Google'),
-              ),
-            ),
-            const SizedBox(height: 8),
-            Center(
-              child: ElevatedButton(
-                onPressed: () => BlocProvider.of<AuthBloc>(context)
-                    .add(const AuthEvent.signedOut()),
-                child: const Text('Sign Out'),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/gymkhana_logo.jpg',
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  const Text(
+                    'IIT Mandi\nStudent Gymkhana',
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Poppins',
+                      color: Color.fromARGB(255, 31, 65, 187),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () => BlocProvider.of<AuthBloc>(context)
+                              .add(const AuthEvent.signInWithGoogleRequested()),
+                          style: ButtonStyle(
+                            elevation: const MaterialStatePropertyAll(20),
+                            shadowColor: const MaterialStatePropertyAll(
+                              Color.fromARGB(255, 203, 214, 255),
+                            ),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            backgroundColor: const MaterialStatePropertyAll(
+                                Color.fromARGB(255, 31, 65, 187)),
+                            fixedSize:
+                                const MaterialStatePropertyAll(Size(165, 60)),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'Sign  In',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'poppins',
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              Image.asset(
+                                'assets/images/google.png',
+                                width: 40,
+                                height: 40,
+                              )
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Center(
+                          child: ElevatedButton(
+                            onPressed: () => BlocProvider.of<AuthBloc>(context)
+                                .add(const AuthEvent.signedOut()),
+                            style: ButtonStyle(
+                              elevation: const MaterialStatePropertyAll(20),
+                              shadowColor: const MaterialStatePropertyAll(
+                                Color.fromARGB(255, 203, 214, 255),
+                              ),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              backgroundColor: const MaterialStatePropertyAll(
+                                  Color.fromARGB(255, 31, 65, 187)),
+                              fixedSize:
+                                  const MaterialStatePropertyAll(Size(165, 60)),
+                            ),
+                            child: const Text(
+                              'Sign Out',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'poppins',
+                                fontWeight: FontWeight.w600,
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
