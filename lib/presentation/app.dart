@@ -18,7 +18,6 @@ class InstituteApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         title: 'Institute App',
-        debugShowCheckedModeBanner: false,
         routerConfig: router,
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),

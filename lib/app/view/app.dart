@@ -12,7 +12,7 @@ class App extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
       ),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
