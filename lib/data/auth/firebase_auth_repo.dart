@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:institute_app/domain/auth/auth_interface.dart';
 import 'package:institute_app/domain/auth/models/auth_failure.dart';
 import 'package:institute_app/domain/auth/models/auth_user.dart';
+import 'package:institute_app/domain/core/value_objects.dart';
 
 @LazySingleton(as: AuthInterface)
 class FirebaseAuthRepo implements AuthInterface {
@@ -20,13 +21,16 @@ class FirebaseAuthRepo implements AuthInterface {
 
   @override
   Option<AuthUser> getSignedInUser() {
-    final user = _firebaseAuth.currentUser;
-    return user != null
+    return _firebaseAuth.currentUser != null
         ? some(
             AuthUser(
-              id: user.uid,
-              name: user.displayName ?? '',
-              email: user.email ?? '',
+              id: UniqueId.fromUniqueString(
+                _firebaseAuth.currentUser!.uid,
+              ),
+              name: StringSingleLine(
+                _firebaseAuth.currentUser!.displayName!,
+              ),
+              email: EmailAddress(_firebaseAuth.currentUser!.email!),
             ),
           )
         : none();
@@ -36,7 +40,6 @@ class FirebaseAuthRepo implements AuthInterface {
   Future<Either<AuthFailure, AuthUser>> signInWithGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
-
       if (googleUser == null) {
         return left(const AuthFailure.cancelledByUser());
       }
@@ -49,40 +52,51 @@ class FirebaseAuthRepo implements AuthInterface {
 
       final credential =
           await _firebaseAuth.signInWithCredential(authCredential);
-      if (credential.user != null) {
-        if (credential.user!.email!.endsWith('iitmandi.ac.in')) {
-          return right(
-            AuthUser(
-              id: credential.user!.uid,
-              name: credential.user!.displayName!,
-              email: credential.user!.email!,
-            ),
-          );
-        } else {
-          await credential.user!.delete();
-          await _googleSignIn.signOut();
-          await _firebaseAuth.signOut();
-          return left(const AuthFailure.nonInstituteEmail());
-        }
-      } else {
+      final user = credential.user;
+      if (user == null) {
         return left(const AuthFailure.serverError());
       }
+
+      final authUser = AuthUser(
+        id: UniqueId.fromUniqueString(user.uid),
+        name: StringSingleLine(user.displayName!),
+        email: EmailAddress(user.email!),
+      );
+
+      return authUser.failureOption.fold(
+        () => right(authUser),
+        (failure) => failure.maybeMap(
+          nonInstituteEmail: (_) {
+            user.delete();
+            signOut();
+            return left(const AuthFailure.nonInstituteEmail());
+          },
+          orElse: () => left(const AuthFailure.serverError()),
+        ),
+      );
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'account-exists-with-different-credential') {
-        return left(
-          const AuthFailure.accountExistsWithDifferentCredential(),
-        );
-      } else if (e.code == 'invalid-credential') {
-        return left(const AuthFailure.invalidCredential());
-      } else {
-        return left(const AuthFailure.serverError());
-      }
+      return left(_handleFirebaseAuthException(e));
     } on PlatformException catch (e) {
-      if (e.code == 'ERROR_USER_DISABLED') {
-        return left(const AuthFailure.userDisabled());
-      } else {
-        return left(const AuthFailure.serverError());
-      }
+      return left(_handlePlatformException(e));
+    }
+  }
+
+  AuthFailure _handleFirebaseAuthException(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'account-exists-with-different-credential':
+        return const AuthFailure.accountExistsWithDifferentCredential();
+      case 'invalid-credential':
+        return const AuthFailure.invalidCredential();
+      default:
+        return const AuthFailure.serverError();
+    }
+  }
+
+  AuthFailure _handlePlatformException(PlatformException e) {
+    if (e.code == 'ERROR_USER_DISABLED') {
+      return const AuthFailure.userDisabled();
+    } else {
+      return const AuthFailure.serverError();
     }
   }
 
