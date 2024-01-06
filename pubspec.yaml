@@ -27,6 +27,10 @@ dependencies:
 dev_dependencies:
   bloc_test: ^9.1.4
   build_runner: ^2.4.7
+  flutter_launcher_icons:
+    git:
+      url: https://github.com/fluttercommunity/flutter_launcher_icons.git
+      ref: master
   flutter_test:
     sdk: flutter
   freezed: ^2.4.6
@@ -38,3 +42,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
