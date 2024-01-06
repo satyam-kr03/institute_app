@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,15 @@ final router = GoRouter(
   debugLogDiagnostics: kDebugMode,
   initialLocation: initialLocation,
   redirect: (context, state) {
-    if (context.watch<AuthBloc>().state is! Authenticated) {
-      return const LoginRoute().location;
+    log('redirect: ${state.matchedLocation}');
+    final authState = context.read<AuthBloc>().state;
+    if (authState is! Authenticated) {
+      if (state.matchedLocation == const SplashRoute().location) {
+        return null;
+      }
+      if (state.matchedLocation != const LoginRoute().location) {
+        return const LoginRoute().location;
+      }
     }
     return null;
   },

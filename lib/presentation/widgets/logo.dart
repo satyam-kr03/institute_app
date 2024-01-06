@@ -12,12 +12,15 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: const CircleAvatar(
-        backgroundColor: Colors.transparent,
-        backgroundImage: AssetImage(_logo),
+    return Hero(
+      tag: 'logo',
+      child: SizedBox(
+        width: size,
+        height: size,
+        child: const CircleAvatar(
+          backgroundColor: Colors.transparent,
+          backgroundImage: AssetImage(_logo),
+        ),
       ),
     );
   }

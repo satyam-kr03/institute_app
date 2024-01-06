@@ -46,12 +46,15 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget buildLogo(Size size) {
-    return SizedBox(
-      height: size.height * 0.3,
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: AppLogo(
-          size: size.height * 0.24,
+    return Hero(
+      tag: 'logo',
+      child: SizedBox(
+        height: size.height * 0.3,
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: AppLogo(
+            size: size.height * 0.24,
+          ),
         ),
       ),
     );
