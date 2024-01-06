@@ -15,13 +15,6 @@ class FirebaseAuthRepo implements AuthInterface {
   })  : _firebaseAuth = firebaseAuth,
         _googleSignIn = googleSignIn;
 
-  factory FirebaseAuthRepo.instance() {
-    return FirebaseAuthRepo(
-      firebaseAuth: FirebaseAuth.instance,
-      googleSignIn: GoogleSignIn(),
-    );
-  }
-
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
 
@@ -61,8 +54,8 @@ class FirebaseAuthRepo implements AuthInterface {
           return right(
             AuthUser(
               id: credential.user!.uid,
-              name: credential.user!.displayName ?? '',
-              email: credential.user!.email ?? '',
+              name: credential.user!.displayName!,
+              email: credential.user!.email!,
             ),
           );
         } else {

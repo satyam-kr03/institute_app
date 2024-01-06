@@ -46,15 +46,12 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget buildLogo(Size size) {
-    return Hero(
-      tag: 'logo',
-      child: SizedBox(
-        height: size.height * 0.3,
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: AppLogo(
-            size: size.height * 0.24,
-          ),
+    return SizedBox(
+      height: size.height * 0.3,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: AppLogo(
+          size: size.height * 0.24,
         ),
       ),
     );
@@ -118,13 +115,13 @@ class LoginPage extends StatelessWidget {
       ),
       messageText: Text(
         failure.map(
-          cancelledByUser: (_) => 'Cancelled by user',
-          serverError: (_) => 'Server error',
-          nonInstituteEmail: (_) => 'Non institute email',
+          cancelledByUser: (_) => 'sign in cancelled',
+          serverError: (_) => 'an unexpected error occured',
+          nonInstituteEmail: (_) => 'non institute email',
           accountExistsWithDifferentCredential: (_) =>
-              'Account exists with different credential',
-          invalidCredential: (_) => 'Invalid credential',
-          userDisabled: (_) => 'User disabled',
+              'account exists with different credential',
+          invalidCredential: (_) => 'invalid credential',
+          userDisabled: (_) => 'user disabled',
         ),
         style: const TextStyle(
           fontSize: 12,

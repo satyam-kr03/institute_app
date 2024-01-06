@@ -122,10 +122,13 @@ class SplashPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ElevatedButton(
-                          onPressed: () => BlocProvider.of<AuthBloc>(context)
-                              .add(const AuthEvent.signInWithGoogleRequested()),
+                          onPressed: () =>
+                              BlocProvider.of<AuthBloc>(context).add(
+                            const AuthEvent.signInWithGoogleRequested(),
+                          ),
                           style: ButtonStyle(
-                            elevation: const MaterialStatePropertyAll(20),
+                            elevation:
+                                const MaterialStatePropertyAll(20),
                             shadowColor: const MaterialStatePropertyAll(
                               Color.fromARGB(255, 203, 214, 255),
                             ),
@@ -135,13 +138,17 @@ class SplashPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            backgroundColor: const MaterialStatePropertyAll(
-                                Color.fromARGB(255, 31, 65, 187)),
-                            fixedSize:
-                                const MaterialStatePropertyAll(Size(165, 60)),
+                            backgroundColor:
+                                const MaterialStatePropertyAll(
+                              Color.fromARGB(255, 31, 65, 187),
+                            ),
+                            fixedSize: const MaterialStatePropertyAll(
+                              Size(165, 60),
+                            ),
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
                                 'Sign  In',
@@ -149,7 +156,8 @@ class SplashPage extends StatelessWidget {
                                   fontSize: 20,
                                   fontFamily: 'poppins',
                                   fontWeight: FontWeight.w600,
-                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  color:
+                                      Color.fromRGBO(255, 255, 255, 1),
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -157,30 +165,37 @@ class SplashPage extends StatelessWidget {
                                 'assets/images/google.png',
                                 width: 40,
                                 height: 40,
-                              )
+                              ),
                             ],
                           ),
                         ),
                         const SizedBox(height: 8),
                         Center(
                           child: ElevatedButton(
-                            onPressed: () => BlocProvider.of<AuthBloc>(context)
-                                .add(const AuthEvent.signedOut()),
+                            onPressed: () =>
+                                BlocProvider.of<AuthBloc>(context)
+                                    .add(const AuthEvent.signedOut()),
                             style: ButtonStyle(
-                              elevation: const MaterialStatePropertyAll(20),
-                              shadowColor: const MaterialStatePropertyAll(
+                              elevation:
+                                  const MaterialStatePropertyAll(20),
+                              shadowColor:
+                                  const MaterialStatePropertyAll(
                                 Color.fromARGB(255, 203, 214, 255),
                               ),
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius:
+                                      BorderRadius.circular(10),
                                 ),
                               ),
-                              backgroundColor: const MaterialStatePropertyAll(
-                                  Color.fromARGB(255, 31, 65, 187)),
-                              fixedSize:
-                                  const MaterialStatePropertyAll(Size(165, 60)),
+                              backgroundColor:
+                                  const MaterialStatePropertyAll(
+                                Color.fromARGB(255, 31, 65, 187),
+                              ),
+                              fixedSize: const MaterialStatePropertyAll(
+                                Size(165, 60),
+                              ),
                             ),
                             child: const Text(
                               'Sign Out',

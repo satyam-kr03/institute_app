@@ -13,12 +13,7 @@ part 'auth_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required AuthInterface authInterface})
       : _authInterface = authInterface,
-        super(
-          authInterface.getSignedInUser().fold(
-                () => const AuthState.unauthenticated(),
-                AuthState.authenticated,
-              ),
-        ) {
+        super(const Initial()) {
     on<AuthEvent>((events, emit) async {
       switch (events) {
         case AuthCheckRequested _:
@@ -31,7 +26,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           );
         case SignInWithGoogleRequested _:
           emit(const AuthState.authenticating());
-          final failureOrSuccess = await _authInterface.signInWithGoogle();
+          final failureOrSuccess =
+              await _authInterface.signInWithGoogle();
           emit(
             failureOrSuccess.fold(
               AuthState.authenticationFailed,

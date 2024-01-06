@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FeedPage extends StatelessWidget {
@@ -12,11 +13,14 @@ class FeedPage extends StatelessWidget {
       body: _buildFeedList(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print('Add Feed Item'); // need to update this
+          if (kDebugMode) {
+            print('Add Feed Item');
+          } // need to update this
         },
         child: const Icon(Icons.add),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.endFloat,
     );
   }
 
@@ -35,8 +39,9 @@ class FeedPage extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => FeedItemDetailsPage(feedItems[index]),
+              MaterialPageRoute<void>(
+                builder: (context) =>
+                    FeedItemDetailsPage(feedItems[index]),
               ),
             );
           },
