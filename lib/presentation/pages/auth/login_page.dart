@@ -25,9 +25,9 @@ class LoginPage extends StatelessWidget {
         }
         else if(state is Authenticated) {
           Future.delayed(
-              const Duration(milliseconds: 500),
+              const Duration(milliseconds: 100),
           () =>
-          context.pushReplacement(const HomeRoute().location),
+          context.pushReplacement(const NavRoute().location),
           );
         }
       },
