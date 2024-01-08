@@ -9,7 +9,6 @@ part of 'router.dart';
 List<RouteBase> get $appRoutes => [
       $splashRoute,
       $loginRoute,
-      $navRoute,
     ];
 
 RouteBase get $splashRoute => GoRouteData.$route(
@@ -56,24 +55,3 @@ extension $LoginRouteExtension on LoginRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $navRoute => GoRouteData.$route(
-      path: '/nav',
-      factory: $NavRouteExtension._fromState,
-    );
-
-extension $NavRouteExtension on NavRoute {
-  static NavRoute _fromState(GoRouterState state) => const NavRoute();
-
-  String get location => GoRouteData.$location(
-        '/nav',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}

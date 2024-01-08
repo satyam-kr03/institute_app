@@ -22,18 +22,14 @@ final _shellNavigatorEKey = GlobalKey<NavigatorState>(debugLabel: 'shellE');
 
 class ScaffoldWithNestedNavigation extends StatelessWidget {
   const ScaffoldWithNestedNavigation({
-    Key? key,
     required this.navigationShell,
+    Key? key,
   }) : super(key: key ?? const ValueKey('ScaffoldWithNestedNavigation'));
   final StatefulNavigationShell navigationShell;
 
   void _goBranch(int index) {
     navigationShell.goBranch(
       index,
-      // A common pattern when using bottom navigation bars is to support
-      // navigating to the initial location when tapping the item that is
-      // already active. This example demonstrates how to support this behavior,
-      // using the initialLocation parameter of goBranch.
       initialLocation: index == navigationShell.currentIndex,
     );
   }
@@ -45,11 +41,27 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: navigationShell.currentIndex,
         destinations: const <Widget>[
-          NavigationDestination(label: 'Home', icon: Icon(Icons.home_outlined), selectedIcon:Icon(Icons.home)),
-          NavigationDestination(label: 'Feed', icon: Icon(Icons.feed_outlined), selectedIcon: Icon(Icons.feed),),
-          NavigationDestination(label: 'Clubs', icon: Icon(Icons.groups_outlined), selectedIcon: Icon(Icons.groups)),
-          NavigationDestination(label: 'Updates', icon: Icon(Icons.notifications_outlined), selectedIcon: Icon(Icons.notifications)),
-          NavigationDestination(label: 'Profile', icon: Icon(Icons.person_outlined), selectedIcon: Icon(Icons.person) ),
+          NavigationDestination(
+              label: 'Home',
+              icon: Icon(Icons.home_outlined),
+              selectedIcon: Icon(Icons.home),),
+          NavigationDestination(
+            label: 'Feed',
+            icon: Icon(Icons.feed_outlined),
+            selectedIcon: Icon(Icons.feed),
+          ),
+          NavigationDestination(
+              label: 'Clubs',
+              icon: Icon(Icons.groups_outlined),
+              selectedIcon: Icon(Icons.groups),),
+          NavigationDestination(
+              label: 'Updates',
+              icon: Icon(Icons.notifications_outlined),
+              selectedIcon: Icon(Icons.notifications),),
+          NavigationDestination(
+              label: 'Profile',
+              icon: Icon(Icons.person_outlined),
+              selectedIcon: Icon(Icons.person),),
         ],
         onDestinationSelected: _goBranch,
       ),
@@ -59,9 +71,9 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
 
 class RootScreen extends StatelessWidget {
   const RootScreen({
-    super.key,
     required this.label,
     required this.detailsPath,
+    super.key,
   });
 
   final String label;
@@ -90,7 +102,7 @@ class RootScreen extends StatelessWidget {
 }
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({Key? key, required this.label}) : super(key: key);
+  const DetailsScreen({required this.label, super.key});
 
   final String label;
 
@@ -116,19 +128,17 @@ final router = GoRouter(
   routes: [
     $splashRoute,
     $loginRoute,
-    $navRoute,
+    //$navRoute,
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
-        // the UI shell
         return ScaffoldWithNestedNavigation(
-            navigationShell: navigationShell,);
+          navigationShell: navigationShell,
+        );
       },
       branches: [
-        // first branch (A)
         StatefulShellBranch(
           navigatorKey: _shellNavigatorAKey,
           routes: [
-            // top route inside branch
             GoRoute(
               path: '/a',
               pageBuilder: (context, state) => const NoTransitionPage(
@@ -139,49 +149,43 @@ final router = GoRouter(
                 GoRoute(
                   path: 'details',
                   builder: (context, state) =>
-                  const DetailsScreen(label: 'Home'),
+                      const DetailsScreen(label: 'Home'),
                 ),
               ],
             ),
           ],
         ),
-        // second branch (B)
         StatefulShellBranch(
           navigatorKey: _shellNavigatorBKey,
           routes: [
-            // top route inside branch
             GoRoute(
               path: '/b',
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: RootScreen(label: 'Feed', detailsPath: '/b/details'),
               ),
               routes: [
-                // child route
                 GoRoute(
                   path: 'details',
                   builder: (context, state) =>
-                  const DetailsScreen(label: 'Feed'),
+                      const DetailsScreen(label: 'Feed'),
                 ),
               ],
             ),
           ],
         ),
-        // third branch (C)
         StatefulShellBranch(
           navigatorKey: _shellNavigatorCKey,
           routes: [
-            // top route inside branch
             GoRoute(
               path: '/c',
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: RootScreen(label: 'Clubs', detailsPath: '/c/details'),
               ),
               routes: [
-                // child route
                 GoRoute(
                   path: 'details',
                   builder: (context, state) =>
-                  const DetailsScreen(label: 'Clubs'),
+                      const DetailsScreen(label: 'Clubs'),
                 ),
               ],
             ),
@@ -190,18 +194,16 @@ final router = GoRouter(
         StatefulShellBranch(
           navigatorKey: _shellNavigatorDKey,
           routes: [
-            // top route inside branch
             GoRoute(
               path: '/d',
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: RootScreen(label: 'Updates', detailsPath: '/d/details'),
               ),
               routes: [
-                // child route
                 GoRoute(
                   path: 'details',
                   builder: (context, state) =>
-                  const DetailsScreen(label: 'Updates'),
+                      const DetailsScreen(label: 'Updates'),
                 ),
               ],
             ),
@@ -210,18 +212,16 @@ final router = GoRouter(
         StatefulShellBranch(
           navigatorKey: _shellNavigatorEKey,
           routes: [
-            // top route inside branch
             GoRoute(
               path: '/e',
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: RootScreen(label: 'Profile', detailsPath: '/e/details'),
               ),
               routes: [
-                // child route
                 GoRoute(
                   path: 'details',
                   builder: (context, state) =>
-                  const DetailsScreen(label: 'Profile'),
+                      const DetailsScreen(label: 'Profile'),
                 ),
               ],
             ),
@@ -233,7 +233,6 @@ final router = GoRouter(
   debugLogDiagnostics: kDebugMode,
   initialLocation: initialLocation,
   navigatorKey: _rootNavigatorKey,
-
   redirect: (context, state) {
     log('redirect: ${state.matchedLocation}');
     final authState = context.read<AuthBloc>().state;
@@ -249,7 +248,6 @@ final router = GoRouter(
   },
 );
 
-
 @TypedGoRoute<SplashRoute>(
   path: initialLocation,
 )
@@ -257,8 +255,7 @@ class SplashRoute extends GoRouteData {
   const SplashRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const SplashPage();
+  Widget build(BuildContext context, GoRouterState state) => const SplashPage();
 }
 
 @TypedGoRoute<LoginRoute>(
@@ -268,86 +265,5 @@ class LoginRoute extends GoRouteData {
   const LoginRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const LoginPage();
+  Widget build(BuildContext context, GoRouterState state) => const LoginPage();
 }
-
-@TypedGoRoute<NavRoute>(
-  path: '/home',
-)
-
-
-class NavRoute extends GoRouteData {
-  const NavRoute();
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return MaterialApp(
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      home: const BottomNavigationBar(),
-    );
-  }
-}
-
-class BottomNavigationBar extends StatefulWidget {
-  const BottomNavigationBar({super.key});
-
-  @override
-  State<BottomNavigationBar> createState() => _BottomNavigationBarState();
-}
-
-class _BottomNavigationBarState extends State<BottomNavigationBar> {
-  int currentPageIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: currentPageIndex,
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        destinations: const <Widget>[
-          NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.feed),
-            icon: Icon(Icons.feed_outlined),
-            label: 'Feed',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.groups),
-            icon: Icon(Icons.groups_outlined),
-            label: 'Clubs',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.notifications),
-            icon: Icon(Icons.notifications_outlined),
-            label: 'Updates',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.person),
-            icon: Icon(Icons.person_outlined),
-            label: 'Profile',
-          ),
-        ],
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('User is Authenticated'),
-            SizedBox(height: 10),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
