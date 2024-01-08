@@ -54,4 +54,3 @@ extension $LoginRouteExtension on LoginRoute {
 
   void replace(BuildContext context) => context.replace(location);
 }
-

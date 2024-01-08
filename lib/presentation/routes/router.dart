@@ -128,7 +128,6 @@ final router = GoRouter(
   routes: [
     $splashRoute,
     $loginRoute,
-    //$navRoute,
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return ScaffoldWithNestedNavigation(
@@ -140,9 +139,9 @@ final router = GoRouter(
           navigatorKey: _shellNavigatorAKey,
           routes: [
             GoRoute(
-              path: '/a',
+              path: '/home',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Home', detailsPath: '/a/details'),
+                child: RootScreen(label: 'Home', detailsPath: '/home/details'),
               ),
               routes: [
                 // child route
@@ -159,9 +158,9 @@ final router = GoRouter(
           navigatorKey: _shellNavigatorBKey,
           routes: [
             GoRoute(
-              path: '/b',
+              path: '/feed',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Feed', detailsPath: '/b/details'),
+                child: RootScreen(label: 'Feed', detailsPath: '/feed/details'),
               ),
               routes: [
                 GoRoute(
@@ -177,9 +176,9 @@ final router = GoRouter(
           navigatorKey: _shellNavigatorCKey,
           routes: [
             GoRoute(
-              path: '/c',
+              path: '/clubs',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Clubs', detailsPath: '/c/details'),
+                child: RootScreen(label: 'Clubs', detailsPath: '/clubs/details'),
               ),
               routes: [
                 GoRoute(
@@ -195,9 +194,9 @@ final router = GoRouter(
           navigatorKey: _shellNavigatorDKey,
           routes: [
             GoRoute(
-              path: '/d',
+              path: '/updates',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Updates', detailsPath: '/d/details'),
+                child: RootScreen(label: 'Updates', detailsPath: '/updates/details'),
               ),
               routes: [
                 GoRoute(
@@ -213,9 +212,9 @@ final router = GoRouter(
           navigatorKey: _shellNavigatorEKey,
           routes: [
             GoRoute(
-              path: '/e',
+              path: '/profile',
               pageBuilder: (context, state) => const NoTransitionPage(
-                child: RootScreen(label: 'Profile', detailsPath: '/e/details'),
+                child: RootScreen(label: 'Profile', detailsPath: '/profile/details'),
               ),
               routes: [
                 GoRoute(

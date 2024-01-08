@@ -10,7 +10,6 @@ import 'package:institute_app/presentation/pages/auth/widgets/sign_in_text.dart'
 import 'package:institute_app/presentation/widgets/logo.dart';
 
 
-import '../../routes/router.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -25,9 +24,9 @@ class LoginPage extends StatelessWidget {
         }
         else if(state is Authenticated) {
           Future.delayed(
-              const Duration(milliseconds: 100),
+              const Duration(milliseconds: 200),
           () =>
-            context.go('/a'),
+            context.go('/home'),
           );
         }
       },
