@@ -128,7 +128,6 @@ final router = GoRouter(
   routes: [
     $splashRoute,
     $loginRoute,
-    //$navRoute,
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return ScaffoldWithNestedNavigation(
