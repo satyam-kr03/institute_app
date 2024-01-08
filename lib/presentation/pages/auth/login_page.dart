@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
           Future.delayed(
               const Duration(milliseconds: 100),
           () =>
-          context.pushReplacement(const NavRoute().location),
+            context.go('/a'),
           );
         }
       },

@@ -17,7 +17,7 @@ class SplashPage extends StatelessWidget {
             Future.delayed(
               const Duration(milliseconds: 200),
                   () =>
-                  context.pushReplacement(const NavRoute().location),
+                  context.go('/a'),
             );
           },
           unauthenticated: (_) {
