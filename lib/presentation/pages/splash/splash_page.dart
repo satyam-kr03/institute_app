@@ -13,7 +13,13 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.maybeMap(
-          authenticated: (_) {},
+          authenticated: (_) {
+            Future.delayed(
+              const Duration(milliseconds: 200),
+                  () =>
+                  context.go('/home'),
+            );
+          },
           unauthenticated: (_) {
             Future.delayed(
               const Duration(milliseconds: 200),
