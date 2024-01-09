@@ -6,17 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:institute_app/application/auth/auth_bloc.dart';
-import 'package:institute_app/clubs/view/clubs_page.dart';
+import 'package:institute_app/clubs/clubs.dart';
 import 'package:institute_app/feed/view/feed_page.dart';
 import 'package:institute_app/home/view/homepage.dart';
 import 'package:institute_app/presentation/pages/auth/login_page.dart';
 import 'package:institute_app/presentation/pages/splash/splash_page.dart';
-import 'package:institute_app/clubs/view/tech_clubs.dart';
-import 'package:institute_app/clubs/view/councils.dart';
-import 'package:institute_app/clubs/view/lit_clubs.dart';
-import 'package:institute_app/clubs/view/research_soc.dart';
-import 'package:institute_app/clubs/view/cult_clubs.dart';
-import 'package:institute_app/clubs/view/sports_soc.dart';
 
 part 'router.g.dart';
 
@@ -235,7 +229,7 @@ final router = GoRouter(
               path: '/updates',
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: RootScreen(
-                    label: 'Updates', detailsPath: '/updates/details'),
+                    label: 'Updates', detailsPath: '/updates/details',),
               ),
               routes: [
                 GoRoute(
@@ -254,7 +248,7 @@ final router = GoRouter(
               path: '/profile',
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: RootScreen(
-                    label: 'Profile', detailsPath: '/profile/details'),
+                    label: 'Profile', detailsPath: '/profile/details',),
               ),
               routes: [
                 GoRoute(

@@ -1,67 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 class ClubsPage extends StatelessWidget {
   const ClubsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final clubData = <Map<String, dynamic>>[
-    ];
-
-    final List<Widget> clubCards = clubData.map((data) {
-      return ClubCard(
-        icon: data['icon'] as IconData,
-        title: data['title'] as String,
-        subtitle: data['subtitle'] as String,
-      );
-    }).toList();
-
     return Scaffold(
       body: Column(
         children: <Widget>[
           AppBar(
-            title: const Text('Clubs'),
+            title: const Text('Clubs & Societies'),
           ),
-          ElevatedButton(
-            onPressed: () => context.go('/clubs/councils'),
-            child: const Text('Councils'),
-          ),
-          ElevatedButton(
-            onPressed: () => context.go('/clubs/research'),
-            child: const Text('Research Society'),
-          ),
-          ElevatedButton(
-            onPressed: () => context.go('/clubs/tech'),
-            child: const Text('Technical Clubs'),
-          ),
-          ElevatedButton(
-            onPressed: () => context.go('/clubs/cult'),
-            child: const Text('Cultural Clubs'),
-          ),
-          ElevatedButton(
-            onPressed: () => context.go('/clubs/lit'),
-            child: const Text('Literary Clubs'),
-          ),
-          ElevatedButton(
-            onPressed: () => context.go('/clubs/sports'),
-            child: const Text('Sports Society'),
-          ),
-
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  ...clubCards,
-                ],
-              ),
+          for (final club in clubs)
+            PressableCard(
+              title: club.title,
+              icon: Icon(club.icon),
+              onPressed: () => context.go(club.route),
             ),
-          ),
         ],
       ),
     );
   }
+}
+
+class PressableCard extends StatelessWidget {
+
+  const PressableCard({required this.title, required this.onPressed, required this.icon, super.key,
+  });
+  final String title;
+  final VoidCallback onPressed;
+  final Icon icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: InkWell(
+        onTap: onPressed,
+        child: Padding(
+          padding: const EdgeInsets.all(16), //EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+          child: Row(
+            children: [
+              icon,
+              const SizedBox(width: 16),
+              Text(title),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+final clubs = [
+  const Club(title: 'Councils', route: '/clubs/councils', icon: Icons.group_work),
+  const Club(title: 'Research Society', route: '/clubs/research', icon: Icons.biotech),
+  const Club(title: 'Technical Clubs', route: '/clubs/tech', icon: Icons.engineering),
+  const Club(title: 'Cultural Clubs', route: '/clubs/cult', icon: Icons.brush),
+  const Club(title: 'Literary Clubs', route: '/clubs/lit', icon: Icons.book),
+  const Club(title: 'Sports Society', route: '/clubs/sports', icon: Icons.emoji_events),
+];
+
+class Club {
+
+  const Club({required this.title, required this.route, required this.icon});
+  final String title;
+  final String route;
+  final IconData icon;
 }
 
 class ClubCard extends StatefulWidget {
@@ -116,4 +121,3 @@ class ClubCardState extends State<ClubCard> {
     );
   }
 }
-

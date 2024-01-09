@@ -10,7 +10,7 @@ class Councils extends StatelessWidget {
       //councils
       {
         'icon': Icons.domain,
-        'title': 'SNTC',
+        'title': 'Science and Technology Council',
         'subtitle': 'Description',
       },
       {
@@ -69,5 +69,3 @@ class Councils extends StatelessWidget {
     );
   }
 }
-
-

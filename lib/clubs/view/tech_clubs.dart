@@ -74,5 +74,3 @@ class TechClubs extends StatelessWidget {
     );
   }
 }
-
-

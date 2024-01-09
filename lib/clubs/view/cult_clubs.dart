@@ -7,7 +7,6 @@ class CultClubs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final clubData = <Map<String, dynamic>>[
-      // tech clubs
       //cult clubs
       {
         'icon': Icons.domain,
@@ -74,5 +73,3 @@ class CultClubs extends StatelessWidget {
     );
   }
 }
-
-
