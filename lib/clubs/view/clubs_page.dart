@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 
 class ClubsPage extends StatelessWidget {
@@ -6,26 +7,9 @@ class ClubsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Club data
     final clubData = <Map<String, dynamic>>[
-      {
-        'icon': Icons.code,
-        'title': 'KamandPrompt',
-        'subtitle': 'Programming Club',
-      },
-      {
-        'icon': Icons.electric_bolt,
-        'title': 'Robotronics',
-        'subtitle': 'Robotics Club',
-      },
-      {
-        'icon': Icons.music_note,
-        'title': 'Music Society',
-        'subtitle': 'Music Club',
-      },
     ];
 
-    // Map club data to ClubCard widgets
     final List<Widget> clubCards = clubData.map((data) {
       return ClubCard(
         icon: data['icon'] as IconData,
@@ -40,7 +24,40 @@ class ClubsPage extends StatelessWidget {
           AppBar(
             title: const Text('Clubs'),
           ),
-          ...clubCards,
+          ElevatedButton(
+            onPressed: () => context.go('/clubs/councils'),
+            child: const Text('Councils'),
+          ),
+          ElevatedButton(
+            onPressed: () => context.go('/clubs/research'),
+            child: const Text('Research Society'),
+          ),
+          ElevatedButton(
+            onPressed: () => context.go('/clubs/tech'),
+            child: const Text('Technical Clubs'),
+          ),
+          ElevatedButton(
+            onPressed: () => context.go('/clubs/cult'),
+            child: const Text('Cultural Clubs'),
+          ),
+          ElevatedButton(
+            onPressed: () => context.go('/clubs/lit'),
+            child: const Text('Literary Clubs'),
+          ),
+          ElevatedButton(
+            onPressed: () => context.go('/clubs/sports'),
+            child: const Text('Sports Society'),
+          ),
+
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  ...clubCards,
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

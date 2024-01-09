@@ -11,6 +11,12 @@ import 'package:institute_app/feed/view/feed_page.dart';
 import 'package:institute_app/home/view/homepage.dart';
 import 'package:institute_app/presentation/pages/auth/login_page.dart';
 import 'package:institute_app/presentation/pages/splash/splash_page.dart';
+import 'package:institute_app/clubs/view/tech_clubs.dart';
+import 'package:institute_app/clubs/view/councils.dart';
+import 'package:institute_app/clubs/view/lit_clubs.dart';
+import 'package:institute_app/clubs/view/research_soc.dart';
+import 'package:institute_app/clubs/view/cult_clubs.dart';
+import 'package:institute_app/clubs/view/sports_soc.dart';
 
 part 'router.g.dart';
 
@@ -189,9 +195,34 @@ final router = GoRouter(
               ),
               routes: [
                 GoRoute(
-                  path: 'details',
+                  path: 'councils',
                   builder: (context, state) =>
-                      const DetailsScreen(label: 'Clubs'),
+                      const Councils(),
+                ),
+                GoRoute(
+                  path: 'tech',
+                  builder: (context, state) =>
+                      const TechClubs(),
+                ),
+                GoRoute(
+                  path: 'research',
+                  builder: (context, state) =>
+                  const ResearchSoc(),
+                ),
+                GoRoute(
+                  path: 'cult',
+                  builder: (context, state) =>
+                  const CultClubs(),
+                ),
+                GoRoute(
+                  path: 'lit',
+                  builder: (context, state) =>
+                  const LitClubs(),
+                ),
+                GoRoute(
+                  path: 'sports',
+                  builder: (context, state) =>
+                  const SportsSoc(),
                 ),
               ],
             ),
