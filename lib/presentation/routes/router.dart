@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:institute_app/application/auth/auth_bloc.dart';
 import 'package:institute_app/presentation/pages/auth/login_page.dart';
+import 'package:institute_app/presentation/pages/profile/profile_page.dart';
 import 'package:institute_app/presentation/pages/splash/splash_page.dart';
 
 part 'router.g.dart';
@@ -52,4 +53,16 @@ class LoginRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const LoginPage();
+}
+
+@TypedGoRoute<ProfileRoute>(
+  path: '/profile',
+)
+class ProfileRoute extends GoRouteData {
+  const ProfileRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ProfilePage();
+  }
 }

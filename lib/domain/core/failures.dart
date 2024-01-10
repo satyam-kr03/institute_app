@@ -24,4 +24,8 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.nonInstituteEmail({
     required T failedValue,
   }) = NonInstituteEmail<T>;
+
+  const factory ValueFailure.invalidUrl({
+    required T failedValue,
+  }) = InvalidUrl<T>;
 }

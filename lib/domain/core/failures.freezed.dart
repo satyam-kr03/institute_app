@@ -24,6 +24,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) nonInstituteEmail,
+    required TResult Function(T failedValue) invalidUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,6 +34,7 @@ mixin _$ValueFailure<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? nonInstituteEmail,
+    TResult? Function(T failedValue)? invalidUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +44,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? nonInstituteEmail,
+    TResult Function(T failedValue)? invalidUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +55,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(NonInstituteEmail<T> value) nonInstituteEmail,
+    required TResult Function(InvalidUrl<T> value) invalidUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +65,7 @@ mixin _$ValueFailure<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult? Function(InvalidUrl<T> value)? invalidUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +75,7 @@ mixin _$ValueFailure<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult Function(InvalidUrl<T> value)? invalidUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -185,6 +191,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) nonInstituteEmail,
+    required TResult Function(T failedValue) invalidUrl,
   }) {
     return empty(failedValue);
   }
@@ -197,6 +204,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? nonInstituteEmail,
+    TResult? Function(T failedValue)? invalidUrl,
   }) {
     return empty?.call(failedValue);
   }
@@ -209,6 +217,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? nonInstituteEmail,
+    TResult Function(T failedValue)? invalidUrl,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -225,6 +234,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(NonInstituteEmail<T> value) nonInstituteEmail,
+    required TResult Function(InvalidUrl<T> value) invalidUrl,
   }) {
     return empty(this);
   }
@@ -237,6 +247,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult? Function(InvalidUrl<T> value)? invalidUrl,
   }) {
     return empty?.call(this);
   }
@@ -249,6 +260,7 @@ class _$EmptyImpl<T> implements Empty<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult Function(InvalidUrl<T> value)? invalidUrl,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -351,6 +363,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) nonInstituteEmail,
+    required TResult Function(T failedValue) invalidUrl,
   }) {
     return exceedingLength(failedValue, max);
   }
@@ -363,6 +376,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? nonInstituteEmail,
+    TResult? Function(T failedValue)? invalidUrl,
   }) {
     return exceedingLength?.call(failedValue, max);
   }
@@ -375,6 +389,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? nonInstituteEmail,
+    TResult Function(T failedValue)? invalidUrl,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -391,6 +406,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(NonInstituteEmail<T> value) nonInstituteEmail,
+    required TResult Function(InvalidUrl<T> value) invalidUrl,
   }) {
     return exceedingLength(this);
   }
@@ -403,6 +419,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult? Function(InvalidUrl<T> value)? invalidUrl,
   }) {
     return exceedingLength?.call(this);
   }
@@ -415,6 +432,7 @@ class _$ExceedingLengthImpl<T> implements ExceedingLength<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult Function(InvalidUrl<T> value)? invalidUrl,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -511,6 +529,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) nonInstituteEmail,
+    required TResult Function(T failedValue) invalidUrl,
   }) {
     return multiline(failedValue);
   }
@@ -523,6 +542,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? nonInstituteEmail,
+    TResult? Function(T failedValue)? invalidUrl,
   }) {
     return multiline?.call(failedValue);
   }
@@ -535,6 +555,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? nonInstituteEmail,
+    TResult Function(T failedValue)? invalidUrl,
     required TResult orElse(),
   }) {
     if (multiline != null) {
@@ -551,6 +572,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(NonInstituteEmail<T> value) nonInstituteEmail,
+    required TResult Function(InvalidUrl<T> value) invalidUrl,
   }) {
     return multiline(this);
   }
@@ -563,6 +585,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult? Function(InvalidUrl<T> value)? invalidUrl,
   }) {
     return multiline?.call(this);
   }
@@ -575,6 +598,7 @@ class _$MultilineImpl<T> implements Multiline<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult Function(InvalidUrl<T> value)? invalidUrl,
     required TResult orElse(),
   }) {
     if (multiline != null) {
@@ -669,6 +693,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) nonInstituteEmail,
+    required TResult Function(T failedValue) invalidUrl,
   }) {
     return invalidEmail(failedValue);
   }
@@ -681,6 +706,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? nonInstituteEmail,
+    TResult? Function(T failedValue)? invalidUrl,
   }) {
     return invalidEmail?.call(failedValue);
   }
@@ -693,6 +719,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? nonInstituteEmail,
+    TResult Function(T failedValue)? invalidUrl,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -709,6 +736,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(NonInstituteEmail<T> value) nonInstituteEmail,
+    required TResult Function(InvalidUrl<T> value) invalidUrl,
   }) {
     return invalidEmail(this);
   }
@@ -721,6 +749,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult? Function(InvalidUrl<T> value)? invalidUrl,
   }) {
     return invalidEmail?.call(this);
   }
@@ -733,6 +762,7 @@ class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult Function(InvalidUrl<T> value)? invalidUrl,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -829,6 +859,7 @@ class _$NonInstituteEmailImpl<T> implements NonInstituteEmail<T> {
     required TResult Function(T failedValue) multiline,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) nonInstituteEmail,
+    required TResult Function(T failedValue) invalidUrl,
   }) {
     return nonInstituteEmail(failedValue);
   }
@@ -841,6 +872,7 @@ class _$NonInstituteEmailImpl<T> implements NonInstituteEmail<T> {
     TResult? Function(T failedValue)? multiline,
     TResult? Function(T failedValue)? invalidEmail,
     TResult? Function(T failedValue)? nonInstituteEmail,
+    TResult? Function(T failedValue)? invalidUrl,
   }) {
     return nonInstituteEmail?.call(failedValue);
   }
@@ -853,6 +885,7 @@ class _$NonInstituteEmailImpl<T> implements NonInstituteEmail<T> {
     TResult Function(T failedValue)? multiline,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? nonInstituteEmail,
+    TResult Function(T failedValue)? invalidUrl,
     required TResult orElse(),
   }) {
     if (nonInstituteEmail != null) {
@@ -869,6 +902,7 @@ class _$NonInstituteEmailImpl<T> implements NonInstituteEmail<T> {
     required TResult Function(Multiline<T> value) multiline,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(NonInstituteEmail<T> value) nonInstituteEmail,
+    required TResult Function(InvalidUrl<T> value) invalidUrl,
   }) {
     return nonInstituteEmail(this);
   }
@@ -881,6 +915,7 @@ class _$NonInstituteEmailImpl<T> implements NonInstituteEmail<T> {
     TResult? Function(Multiline<T> value)? multiline,
     TResult? Function(InvalidEmail<T> value)? invalidEmail,
     TResult? Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult? Function(InvalidUrl<T> value)? invalidUrl,
   }) {
     return nonInstituteEmail?.call(this);
   }
@@ -893,6 +928,7 @@ class _$NonInstituteEmailImpl<T> implements NonInstituteEmail<T> {
     TResult Function(Multiline<T> value)? multiline,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult Function(InvalidUrl<T> value)? invalidUrl,
     required TResult orElse(),
   }) {
     if (nonInstituteEmail != null) {
@@ -912,4 +948,168 @@ abstract class NonInstituteEmail<T> implements ValueFailure<T> {
   @JsonKey(ignore: true)
   _$$NonInstituteEmailImplCopyWith<T, _$NonInstituteEmailImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InvalidUrlImplCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory _$$InvalidUrlImplCopyWith(
+          _$InvalidUrlImpl<T> value, $Res Function(_$InvalidUrlImpl<T>) then) =
+      __$$InvalidUrlImplCopyWithImpl<T, $Res>;
+  @override
+  @useResult
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class __$$InvalidUrlImplCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res, _$InvalidUrlImpl<T>>
+    implements _$$InvalidUrlImplCopyWith<T, $Res> {
+  __$$InvalidUrlImplCopyWithImpl(
+      _$InvalidUrlImpl<T> _value, $Res Function(_$InvalidUrlImpl<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(_$InvalidUrlImpl<T>(
+      failedValue: freezed == failedValue
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvalidUrlImpl<T> implements InvalidUrl<T> {
+  const _$InvalidUrlImpl({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidUrl(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InvalidUrlImpl<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InvalidUrlImplCopyWith<T, _$InvalidUrlImpl<T>> get copyWith =>
+      __$$InvalidUrlImplCopyWithImpl<T, _$InvalidUrlImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue, int max) exceedingLength,
+    required TResult Function(T failedValue) multiline,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) nonInstituteEmail,
+    required TResult Function(T failedValue) invalidUrl,
+  }) {
+    return invalidUrl(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T failedValue)? empty,
+    TResult? Function(T failedValue, int max)? exceedingLength,
+    TResult? Function(T failedValue)? multiline,
+    TResult? Function(T failedValue)? invalidEmail,
+    TResult? Function(T failedValue)? nonInstituteEmail,
+    TResult? Function(T failedValue)? invalidUrl,
+  }) {
+    return invalidUrl?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue, int max)? exceedingLength,
+    TResult Function(T failedValue)? multiline,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? nonInstituteEmail,
+    TResult Function(T failedValue)? invalidUrl,
+    required TResult orElse(),
+  }) {
+    if (invalidUrl != null) {
+      return invalidUrl(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+    required TResult Function(Multiline<T> value) multiline,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(NonInstituteEmail<T> value) nonInstituteEmail,
+    required TResult Function(InvalidUrl<T> value) invalidUrl,
+  }) {
+    return invalidUrl(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Empty<T> value)? empty,
+    TResult? Function(ExceedingLength<T> value)? exceedingLength,
+    TResult? Function(Multiline<T> value)? multiline,
+    TResult? Function(InvalidEmail<T> value)? invalidEmail,
+    TResult? Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult? Function(InvalidUrl<T> value)? invalidUrl,
+  }) {
+    return invalidUrl?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    TResult Function(Multiline<T> value)? multiline,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(NonInstituteEmail<T> value)? nonInstituteEmail,
+    TResult Function(InvalidUrl<T> value)? invalidUrl,
+    required TResult orElse(),
+  }) {
+    if (invalidUrl != null) {
+      return invalidUrl(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidUrl<T> implements ValueFailure<T> {
+  const factory InvalidUrl({required final T failedValue}) =
+      _$InvalidUrlImpl<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  _$$InvalidUrlImplCopyWith<T, _$InvalidUrlImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -19,7 +19,7 @@ mixin _$AuthUser {
   UniqueId get id => throw _privateConstructorUsedError;
   StringSingleLine get name => throw _privateConstructorUsedError;
   EmailAddress get email => throw _privateConstructorUsedError;
-  String? get photoUrl => throw _privateConstructorUsedError;
+  Url? get photoUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthUserCopyWith<AuthUser> get copyWith =>
@@ -32,10 +32,7 @@ abstract class $AuthUserCopyWith<$Res> {
       _$AuthUserCopyWithImpl<$Res, AuthUser>;
   @useResult
   $Res call(
-      {UniqueId id,
-      StringSingleLine name,
-      EmailAddress email,
-      String? photoUrl});
+      {UniqueId id, StringSingleLine name, EmailAddress email, Url? photoUrl});
 }
 
 /// @nodoc
@@ -72,7 +69,7 @@ class _$AuthUserCopyWithImpl<$Res, $Val extends AuthUser>
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Url?,
     ) as $Val);
   }
 }
@@ -86,10 +83,7 @@ abstract class _$$AuthUserImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {UniqueId id,
-      StringSingleLine name,
-      EmailAddress email,
-      String? photoUrl});
+      {UniqueId id, StringSingleLine name, EmailAddress email, Url? photoUrl});
 }
 
 /// @nodoc
@@ -124,7 +118,7 @@ class __$$AuthUserImplCopyWithImpl<$Res>
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Url?,
     ));
   }
 }
@@ -145,7 +139,7 @@ class _$AuthUserImpl with DiagnosticableTreeMixin implements _AuthUser {
   @override
   final EmailAddress email;
   @override
-  final String? photoUrl;
+  final Url? photoUrl;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -190,7 +184,7 @@ abstract class _AuthUser implements AuthUser {
       {required final UniqueId id,
       required final StringSingleLine name,
       required final EmailAddress email,
-      final String? photoUrl}) = _$AuthUserImpl;
+      final Url? photoUrl}) = _$AuthUserImpl;
 
   @override
   UniqueId get id;
@@ -199,7 +193,7 @@ abstract class _AuthUser implements AuthUser {
   @override
   EmailAddress get email;
   @override
-  String? get photoUrl;
+  Url? get photoUrl;
   @override
   @JsonKey(ignore: true)
   _$$AuthUserImplCopyWith<_$AuthUserImpl> get copyWith =>

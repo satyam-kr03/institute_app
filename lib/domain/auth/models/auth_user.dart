@@ -12,7 +12,7 @@ abstract class AuthUser with _$AuthUser {
     required UniqueId id,
     required StringSingleLine name,
     required EmailAddress email,
-    String? photoUrl,
+    Url? photoUrl,
   }) = _AuthUser;
 }
 

@@ -1,11 +1,13 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:institute_app/application/auth/auth_bloc.dart';
 import 'package:institute_app/domain/auth/models/auth_failure.dart';
 import 'package:institute_app/presentation/pages/auth/widgets/madeby_text.dart';
 import 'package:institute_app/presentation/pages/auth/widgets/sign_in_button.dart';
 import 'package:institute_app/presentation/pages/auth/widgets/sign_in_text.dart';
+import 'package:institute_app/presentation/routes/router.dart';
 import 'package:institute_app/presentation/widgets/logo.dart';
 
 class LoginPage extends StatelessWidget {
@@ -18,6 +20,9 @@ class LoginPage extends StatelessWidget {
       listener: (context, state) {
         if (state is AuthenticationFailed) {
           showFlushbar(context, state.failure);
+        }
+        if (state is Authenticated) {
+          context.pushReplacement(const ProfileRoute().location);
         }
       },
       child: Scaffold(

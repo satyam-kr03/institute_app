@@ -94,3 +94,16 @@ class EmailAddress extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 }
+
+class Url extends ValueObject<String> {
+  factory Url(String input) {
+    return Url._(
+      validateUrl(input),
+    );
+  }
+
+  const Url._(this.value);
+
+  @override
+  final Either<ValueFailure<String>, String> value;
+}

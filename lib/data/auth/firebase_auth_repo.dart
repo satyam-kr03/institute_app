@@ -21,16 +21,19 @@ class FirebaseAuthRepo implements AuthInterface {
 
   @override
   Option<AuthUser> getSignedInUser() {
+    final user = _firebaseAuth.currentUser;
     return _firebaseAuth.currentUser != null
         ? some(
             AuthUser(
               id: UniqueId.fromUniqueString(
-                _firebaseAuth.currentUser!.uid,
+                user!.uid,
               ),
               name: StringSingleLine(
-                _firebaseAuth.currentUser!.displayName!,
+                user.displayName!,
               ),
-              email: EmailAddress(_firebaseAuth.currentUser!.email!),
+              email: EmailAddress(user.email!),
+              photoUrl:
+                  user.photoURL != null ? Url(user.photoURL!) : null,
             ),
           )
         : none();
@@ -61,6 +64,7 @@ class FirebaseAuthRepo implements AuthInterface {
         id: UniqueId.fromUniqueString(user.uid),
         name: StringSingleLine(user.displayName!),
         email: EmailAddress(user.email!),
+        photoUrl: user.photoURL != null ? Url(user.photoURL!) : null,
       );
 
       return authUser.failureOption.fold(
