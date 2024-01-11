@@ -16,8 +16,10 @@ class HomePage extends StatelessWidget {
           const UpdatesCard(),
           const Padding(
             padding: EdgeInsets.fromLTRB(1, 20, 1, 1),
-            child: Text('Explore Resources'
-                , style: TextStyle(fontSize: 15) ),
+            child: Text(
+              'Explore Resources',
+              style: TextStyle(fontSize: 15),
+            ),
           ),
           const Expanded(
             child: ResourcesGrid(),
@@ -86,7 +88,11 @@ class ResourcesGrid extends StatelessWidget {
       itemCount: resourceData.length,
       itemBuilder: (context, index) {
         final data = resourceData[index];
-        return GridItem(data['title'] as String, data['icon'] as IconData, data['url'] as String);
+        return GridItem(
+          data['title'] as String,
+          data['icon'] as IconData,
+          data['url'] as String,
+        );
       },
     );
   }
@@ -146,7 +152,8 @@ final resourceData = <Map<String, dynamic>>[
   {
     'icon': Icons.date_range,
     'title': 'Calendar',
-    'url': 'https://iitmandi.ac.in/academic_calendar/Annexure%20A-%20Academic%20Calender%20Jan%20June,%202024%20(Even).pdf',
+    'url':
+        'https://iitmandi.ac.in/academic_calendar/Annexure%20A-%20Academic%20Calender%20Jan%20June,%202024%20(Even).pdf',
   },
   {
     'icon': Icons.access_time,

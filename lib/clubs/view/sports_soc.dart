@@ -48,5 +48,3 @@ class SportsSoc extends StatelessWidget {
     );
   }
 }
-
-
