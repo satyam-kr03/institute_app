@@ -1,22 +1,26 @@
 import 'package:flutter/foundation.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:institute_app/domain/core/failures.dart';
+import 'package:institute_app/domain/core/value_objects.dart';
 
 part 'auth_user.freezed.dart';
-part 'auth_user.g.dart';
 
 @freezed
 abstract class AuthUser with _$AuthUser {
-  @Assert(
-    'email.endsWith("iitmandi.ac.in")',
-    'Email must be of IIT Mandi',
-  )
   factory AuthUser({
-    required String id,
-    required String name,
-    required String email,
-    String? photoUrl,
+    required UniqueId id,
+    required StringSingleLine name,
+    required EmailAddress email,
+    Url? photoUrl,
   }) = _AuthUser;
+}
 
-  factory AuthUser.fromJson(Map<String, Object?> json) =>
-      _$AuthUserFromJson(json);
+extension AuthUserX on AuthUser {
+  Option<ValueFailure<dynamic>> get failureOption {
+    return name.failureOrUnit.andThen(() => email.failureOrUnit).fold(
+          some,
+          (r) => const None(),
+        );
+  }
 }

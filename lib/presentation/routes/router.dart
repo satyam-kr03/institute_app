@@ -10,6 +10,7 @@ import 'package:institute_app/clubs/clubs.dart';
 import 'package:institute_app/feed/view/feed_page.dart';
 import 'package:institute_app/home/view/homepage.dart';
 import 'package:institute_app/presentation/pages/auth/login_page.dart';
+import 'package:institute_app/presentation/pages/profile/profile_page.dart';
 import 'package:institute_app/presentation/pages/splash/splash_page.dart';
 
 part 'router.g.dart';
@@ -299,4 +300,16 @@ class LoginRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) => const LoginPage();
+}
+
+@TypedGoRoute<ProfileRoute>(
+  path: '/profile',
+)
+class ProfileRoute extends GoRouteData {
+  const ProfileRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ProfilePage();
+  }
 }

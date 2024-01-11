@@ -14,18 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-AuthUser _$AuthUserFromJson(Map<String, dynamic> json) {
-  return _AuthUser.fromJson(json);
-}
-
 /// @nodoc
 mixin _$AuthUser {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String? get photoUrl => throw _privateConstructorUsedError;
+  UniqueId get id => throw _privateConstructorUsedError;
+  StringSingleLine get name => throw _privateConstructorUsedError;
+  EmailAddress get email => throw _privateConstructorUsedError;
+  Url? get photoUrl => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AuthUserCopyWith<AuthUser> get copyWith =>
       throw _privateConstructorUsedError;
@@ -36,7 +31,8 @@ abstract class $AuthUserCopyWith<$Res> {
   factory $AuthUserCopyWith(AuthUser value, $Res Function(AuthUser) then) =
       _$AuthUserCopyWithImpl<$Res, AuthUser>;
   @useResult
-  $Res call({String id, String name, String email, String? photoUrl});
+  $Res call(
+      {UniqueId id, StringSingleLine name, EmailAddress email, Url? photoUrl});
 }
 
 /// @nodoc
@@ -61,19 +57,19 @@ class _$AuthUserCopyWithImpl<$Res, $Val extends AuthUser>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UniqueId,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as StringSingleLine,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EmailAddress,
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Url?,
     ) as $Val);
   }
 }
@@ -86,7 +82,8 @@ abstract class _$$AuthUserImplCopyWith<$Res>
       __$$AuthUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String email, String? photoUrl});
+  $Res call(
+      {UniqueId id, StringSingleLine name, EmailAddress email, Url? photoUrl});
 }
 
 /// @nodoc
@@ -109,44 +106,40 @@ class __$$AuthUserImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UniqueId,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as StringSingleLine,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EmailAddress,
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Url?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$AuthUserImpl with DiagnosticableTreeMixin implements _AuthUser {
   _$AuthUserImpl(
       {required this.id,
       required this.name,
       required this.email,
-      this.photoUrl})
-      : assert(email.endsWith("iitmandi.ac.in"), 'Email must be of IIT Mandi');
-
-  factory _$AuthUserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AuthUserImplFromJson(json);
+      this.photoUrl});
 
   @override
-  final String id;
+  final UniqueId id;
   @override
-  final String name;
+  final StringSingleLine name;
   @override
-  final String email;
+  final EmailAddress email;
   @override
-  final String? photoUrl;
+  final Url? photoUrl;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -176,7 +169,6 @@ class _$AuthUserImpl with DiagnosticableTreeMixin implements _AuthUser {
                 other.photoUrl == photoUrl));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, email, photoUrl);
 
@@ -185,33 +177,23 @@ class _$AuthUserImpl with DiagnosticableTreeMixin implements _AuthUser {
   @pragma('vm:prefer-inline')
   _$$AuthUserImplCopyWith<_$AuthUserImpl> get copyWith =>
       __$$AuthUserImplCopyWithImpl<_$AuthUserImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AuthUserImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _AuthUser implements AuthUser {
   factory _AuthUser(
-      {required final String id,
-      required final String name,
-      required final String email,
-      final String? photoUrl}) = _$AuthUserImpl;
-
-  factory _AuthUser.fromJson(Map<String, dynamic> json) =
-      _$AuthUserImpl.fromJson;
+      {required final UniqueId id,
+      required final StringSingleLine name,
+      required final EmailAddress email,
+      final Url? photoUrl}) = _$AuthUserImpl;
 
   @override
-  String get id;
+  UniqueId get id;
   @override
-  String get name;
+  StringSingleLine get name;
   @override
-  String get email;
+  EmailAddress get email;
   @override
-  String? get photoUrl;
+  Url? get photoUrl;
   @override
   @JsonKey(ignore: true)
   _$$AuthUserImplCopyWith<_$AuthUserImpl> get copyWith =>

@@ -7,6 +7,7 @@ import 'package:institute_app/domain/auth/models/auth_failure.dart';
 import 'package:institute_app/presentation/pages/auth/widgets/madeby_text.dart';
 import 'package:institute_app/presentation/pages/auth/widgets/sign_in_button.dart';
 import 'package:institute_app/presentation/pages/auth/widgets/sign_in_text.dart';
+import 'package:institute_app/presentation/routes/router.dart';
 import 'package:institute_app/presentation/widgets/logo.dart';
 
 
