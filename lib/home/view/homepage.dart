@@ -1,136 +1,166 @@
-// import 'package:flutter/material.dart';
-// import 'package:fpdart/fpdart.dart' as fp;
-// import 'package:google_nav_bar/google_nav_bar.dart';
-// import 'package:institute_app/clubs/clubs.dart';
-// import 'package:institute_app/data/auth/firebase_auth_repo.dart';
-// import 'package:institute_app/domain/auth/models/auth_user.dart';
-// import 'package:institute_app/feed/feed.dart';
-// import 'package:institute_app/profile/profile.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-// class HomePage extends StatefulWidget {
-//   const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
-//   static const routeName = '/';
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          AppBar(
+            title: const Text('Home'),
+          ),
+          const WelcomeCard(),
+          const UpdatesCard(),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(1, 20, 1, 1),
+            child: Text('Explore Resources'
+                , style: TextStyle(fontSize: 15) ),
+          ),
+          const Expanded(
+            child: ResourcesGrid(),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-//   @override
-//   HomePageState createState() => HomePageState();
-// }
+class WelcomeCard extends StatelessWidget {
+  const WelcomeCard({super.key});
 
-// class HomePageState extends State<HomePage> {
-//   int _currentIndex = 0;
-//   late List<Widget> _pages; // Declare _pages variable
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.account_circle_rounded),
+              title: Text('Welcome User'),
+              subtitle: Text('Get Started'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     final authRepo = FirebaseAuthRepo.instance();
-//     final data = GetData(authRepo);
-//     _pages = [
-//       HomePageContent(getData: data),
-//       const FeedPage(),
-//       const ClubsPage(),
-//       ProfilePage(getData: data),
-//     ];
-//   }
+class UpdatesCard extends StatelessWidget {
+  const UpdatesCard({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         body: Stack(
-//           children: [
-//             _pages[_currentIndex],
-//           ],
-//         ),
-//         bottomNavigationBar: GNav(
-//           backgroundColor: Colors.black,
-//           color: Colors.white,
-//           rippleColor: Colors.white,
-//           activeColor: Colors.white,
-//           tabBackgroundColor: Colors.grey.shade800,
-//           gap: 5,
-//           tabs: const [
-//             GButton(
-//               icon: Icons.home,
-//               text: 'Home',
-//             ),
-//             GButton(
-//               icon: Icons.feed,
-//               text: 'Feed',
-//             ),
-//             GButton(
-//               icon: Icons.groups,
-//               text: 'Clubs',
-//             ),
-//             GButton(
-//               icon: Icons.account_circle,
-//               text: 'Profile',
-//             ),
-//           ],
-//           selectedIndex: _currentIndex,
-//           onTabChange: (index) {
-//             setState(() {
-//               _currentIndex = index;
-//             });
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.calendar_today_rounded),
+              title: Text('Upcoming'),
+              subtitle: Text('No upcoming events'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
-// class HomePageContent extends StatelessWidget {
-//   const HomePageContent({required this.getData, super.key});
-//   final GetData getData;
+class ResourcesGrid extends StatelessWidget {
+  const ResourcesGrid({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     final authUser = getData.authRepo.getSignedInUser().getOrElse(
-//           () => AuthUser(id: '', name: '', email: ''),
-//         );
-//     return Column(
-//       children: [
-//         GreetingCard(name: authUser.name),
-//         const Expanded(
-//           child: Center(
-//             child: Text('Home Page Content'),
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 4,
+        crossAxisSpacing: 8,
+        mainAxisSpacing: 8,
+      ),
+      itemCount: resourceData.length,
+      itemBuilder: (context, index) {
+        final data = resourceData[index];
+        return GridItem(data['title'] as String, data['icon'] as IconData, data['url'] as String);
+      },
+    );
+  }
+}
 
-// class GreetingCard extends StatelessWidget {
-//   const GreetingCard({required this.name, super.key});
-//   final String name;
+class GridItem extends StatelessWidget {
+  const GridItem(this.name, this.icon, this.link, {super.key});
+  final String name;
+  final IconData icon;
+  final String link;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 50),
-//       child: Card(
-//         elevation: 4,
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(12),
-//         ),
-//         child: Container(
-//           padding: const EdgeInsets.all(16),
-//           width: double.infinity,
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               Text(
-//                 'Welcome, $name !',
-//                 style: const TextStyle(
-//                   fontSize: 18,
-//                   fontWeight: FontWeight.bold,
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    final label = name;
+    final iconData = icon;
+    final url = link;
+
+    return InkWell(
+      onTap: () {
+        launchUrl(Uri.parse(url));
+      },
+      child: Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(iconData, size: 24),
+            const SizedBox(height: 8),
+            Text(label),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+final resourceData = <Map<String, dynamic>>[
+  {
+    'icon': Icons.domain,
+    'title': 'OAS',
+    'url': 'https://oas.iitmandi.ac.in/',
+  },
+  {
+    'icon': Icons.school,
+    'title': 'LMS',
+    'url': 'https://lms.iitmandi.ac.in/',
+  },
+  {
+    'icon': Icons.corporate_fare,
+    'title': 'Insite',
+    'url': 'https://insite.iitmandi.ac.in/',
+  },
+  {
+    'icon': Icons.map,
+    'title': 'Map',
+    'url': 'https://maps.app.goo.gl/8yN6x44dmjtMk3bGA',
+  },
+  {
+    'icon': Icons.date_range,
+    'title': 'Calendar',
+    'url': 'https://iitmandi.ac.in/academic_calendar/Annexure%20A-%20Academic%20Calender%20Jan%20June,%202024%20(Even).pdf',
+  },
+  {
+    'icon': Icons.access_time,
+    'title': 'Time Table',
+    'url': 'https://www.iitmandi.ac.in/files/Timetable_Aug2023.pdf',
+  },
+  {
+    'icon': Icons.book,
+    'title': 'Library',
+    'url': 'http://library.iitmandi.ac.in/',
+  },
+  {
+    'icon': Icons.public,
+    'title': 'SNTC',
+    'url': 'https://iitmandi.co.in/',
+  },
+];

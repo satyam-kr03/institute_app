@@ -10,6 +10,8 @@ import 'package:institute_app/presentation/pages/auth/widgets/sign_in_text.dart'
 import 'package:institute_app/presentation/routes/router.dart';
 import 'package:institute_app/presentation/widgets/logo.dart';
 
+
+
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -21,8 +23,12 @@ class LoginPage extends StatelessWidget {
         if (state is AuthenticationFailed) {
           showFlushbar(context, state.failure);
         }
-        if (state is Authenticated) {
-          context.pushReplacement(const ProfileRoute().location);
+        else if(state is Authenticated) {
+          Future.delayed(
+              const Duration(milliseconds: 200),
+          () =>
+            context.go('/home'),
+          );
         }
       },
       child: Scaffold(

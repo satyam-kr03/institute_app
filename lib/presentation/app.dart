@@ -5,6 +5,7 @@ import 'package:institute_app/application/user/user_cubit.dart';
 import 'package:institute_app/injection.dart';
 import 'package:institute_app/presentation/routes/router.dart';
 
+
 class InstituteApp extends StatelessWidget {
   const InstituteApp({super.key});
 
