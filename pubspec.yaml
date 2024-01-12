@@ -34,7 +34,7 @@ dependencies:
 
 dev_dependencies:
   bloc_test: ^9.1.5
-  build_runner: ^2.4.7
+  build_runner: ^2.4.8
   cloud_firestore_odm_generator: ^1.0.0-dev.82
   flutter_launcher_icons:
     git:
