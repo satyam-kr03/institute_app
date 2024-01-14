@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:institute_app/application/user/user_form/user_form_bloc.dart';
-import 'package:institute_app/domain/user/models/user.dart';
+import 'package:institute_app/presentation/widgets/profile_photo.dart';
 
 class ProfileForm extends StatelessWidget {
   const ProfileForm({
@@ -134,50 +134,6 @@ class BioFormField extends HookWidget {
                   ),
         );
       },
-    );
-  }
-}
-
-class ProfilePhoto extends StatelessWidget {
-  const ProfilePhoto({
-    required this.user,
-    super.key,
-  });
-
-  final User user;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary,
-        shape: BoxShape.circle,
-        image: user.photoUrl != null && user.photoUrl!.isValid()
-            ? DecorationImage(
-                image: NetworkImage(
-                  user.photoUrl!.value.fold(
-                    (l) => '',
-                    (r) => r,
-                  ),
-                ),
-                fit: BoxFit.cover,
-              )
-            : null,
-      ),
-      child: Center(
-        child: user.photoUrl == null || !user.photoUrl!.isValid()
-            ? Text(
-                user.name.getOrCrash().substring(0, 1),
-                style: TextStyle(
-                  fontSize: 52,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-              )
-            : null,
-      ),
     );
   }
 }
