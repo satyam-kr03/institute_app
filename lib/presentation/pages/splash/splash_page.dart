@@ -41,7 +41,7 @@ class SplashPage extends StatelessWidget {
                 }
               },
               loadSuccess: (value) =>
-                  context.pushNamed(const ProfileRoute().location),
+                  context.pushReplacement(const HomeRoute().location),
               orElse: () {},
             );
           },
