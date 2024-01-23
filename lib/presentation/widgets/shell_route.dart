@@ -14,6 +14,10 @@ class ShellRouteWidget extends StatelessWidget {
     switch (location) {
       case '/home':
         return 0;
+      case '/explore':
+        return 1;
+      case '/updates':
+        return 2;
       default:
         return 0;
     }

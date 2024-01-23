@@ -7,14 +7,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:institute_app/application/auth/auth_bloc.dart';
 import 'package:institute_app/presentation/pages/auth/login_page.dart';
+import 'package:institute_app/presentation/pages/explore/explore_page.dart';
 import 'package:institute_app/presentation/pages/home/home_page.dart';
 import 'package:institute_app/presentation/pages/profile/profile_page.dart';
 import 'package:institute_app/presentation/pages/splash/splash_page.dart';
+import 'package:institute_app/presentation/pages/updates/updates_page.dart';
 import 'package:institute_app/presentation/widgets/shell_route.dart';
 
 part 'router.g.dart';
 
 const initialLocation = '/';
+
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
 
 // final _rootNavigatorKey = GlobalKey<NavigatorState>();
 // final _shellNavigatorAKey =
@@ -268,6 +273,7 @@ final router = GoRouter(
   // ],
   routes: $appRoutes,
   debugLogDiagnostics: kDebugMode,
+  navigatorKey: rootNavigatorKey,
   initialLocation: initialLocation,
   redirect: (context, state) {
     log('redirect: ${state.matchedLocation}');
@@ -291,8 +297,7 @@ class SplashRoute extends GoRouteData {
   const SplashRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const SplashPage();
+  Widget build(BuildContext context, GoRouterState state) => const SplashPage();
 }
 
 @TypedGoRoute<LoginRoute>(
@@ -302,8 +307,7 @@ class LoginRoute extends GoRouteData {
   const LoginRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const LoginPage();
+  Widget build(BuildContext context, GoRouterState state) => const LoginPage();
 }
 
 @TypedGoRoute<ProfileRoute>(
@@ -321,10 +325,14 @@ class ProfileRoute extends GoRouteData {
 @TypedShellRoute<AppShellRouteData>(
   routes: <TypedRoute<RouteData>>[
     TypedGoRoute<HomeRoute>(path: '/home'),
+    TypedGoRoute<ExploreRoute>(path: '/explore'),
+    TypedGoRoute<UpdatesRoute>(path: '/updates'),
   ],
 )
 class AppShellRouteData extends ShellRouteData {
   const AppShellRouteData();
+
+  static final GlobalKey<NavigatorState> $navigatorKey = shellNavigatorKey;
 
   @override
   Widget builder(
@@ -332,7 +340,9 @@ class AppShellRouteData extends ShellRouteData {
     GoRouterState state,
     Widget navigator,
   ) {
-    return ShellRouteWidget(child: navigator);
+    return ShellRouteWidget(
+      child: navigator,
+    );
   }
 }
 
@@ -342,5 +352,23 @@ class HomeRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const HomePage();
+  }
+}
+
+class ExploreRoute extends GoRouteData {
+  const ExploreRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ExplorePage();
+  }
+}
+
+class UpdatesRoute extends GoRouteData {
+  const UpdatesRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const UpdatesPage();
   }
 }
