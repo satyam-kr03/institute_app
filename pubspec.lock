@@ -25,14 +25,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.0"
-  animations:
-    dependency: "direct main"
-    description:
-      name: animations
-      sha256: d3d6dcfb218225bbe68e87ccf6378bbb2e32a94900722c5f81611dad089911cb
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.11"
   another_flushbar:
     dependency: "direct main"
     description:
@@ -297,6 +289,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
+  fast_immutable_collections:
+    dependency: "direct main"
+    description:
+      name: fast_immutable_collections
+      sha256: "062bc1eacb6e09c4a67ba5d6387c85b44c21b9e3ed91f8d35691712c00aa559f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.0.0"
   ffi:
     dependency: transitive
     description:
