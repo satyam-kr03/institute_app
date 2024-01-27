@@ -82,6 +82,19 @@ class StringSingleLine extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 }
 
+class StringMultiLine extends ValueObject<String> {
+  factory StringMultiLine(String input) {
+    return StringMultiLine._(
+      validateMaxStringLength(input, 1000).flatMap(validateStringNotEmpty),
+    );
+  }
+
+  const StringMultiLine._(this.value);
+
+  @override
+  final Either<ValueFailure<String>, String> value;
+}
+
 class EmailAddress extends ValueObject<String> {
   factory EmailAddress(String input) {
     return EmailAddress._(
